@@ -1,0 +1,177 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --light-blue: hsl(236, 72%, 79%);
+  --dark-blue: hsl(237, 63%, 64%);
+  --Very-Light-Grayish-Blue: hsl(240, 78%, 98%);
+  --Light-Grayish-Blue: hsl(234, 14%, 74%);
+  --Grayish-Blue: hsl(233, 13%, 49%);
+  --Dark-Grayish-Blue: hsl(232, 13%, 33%);
+}
+
+body {
+  min-height: 100vh;
+  min-width: 280px;
+  padding: 2.5rem 1rem;
+  background: url("../images/bg-top.svg") hsl(0deg 0.81% 93%)
+    no-repeat;
+  background-size: contain;
+  background-position: 120px -45px;
+}
+
+.title{
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.toggle-section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+  gap: 1rem;
+}
+
+.toggle-section .main-toggle input{
+  display: none;
+}
+
+.toggle-section .main-toggle{
+  display: flex;
+  width: 60px;
+  height: 35px;
+  align-items: center;
+  padding: 0 5px;
+  background: linear-gradient(to right , hsl(236, 72%, 79%) , hsl(237, 63%, 64%));
+  border-radius: 50px;
+  position: relative;
+}
+
+.toggle-section .main-toggle .toggle-posaition{
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--Very-Light-Grayish-Blue);
+  transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: absolute;
+}
+
+#Annually:checked + .toggle-posaition{
+  transform: translateX(0);
+}
+
+#Monthly:checked + .toggle-posaition{
+  transform: translateX(25px);
+}
+
+.pricing-box{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.card{
+  min-width: 250px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: var(--Very-Light-Grayish-Blue);
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.card span{
+  padding: 0 0 12px;
+  border-bottom: 1px solid var(--Light-Grayish-Blue);
+  margin-top: 18px;
+}
+
+.card .price{
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.card button{
+  border: none;
+  outline: none;
+  margin-top: 20px;
+  padding: 15px 0;
+  border-radius: 7px;
+  background: linear-gradient(hsl(236, 72%, 79%) , hsl(237, 63%, 64%));
+  color: var(--Very-Light-Grayish-Blue);
+}
+
+.card button:hover{
+  border: 1px solid var(--dark-blue);
+  background: transparent;
+  color: var(--dark-blue);
+}
+
+.card:nth-child(2){
+  background: var(--dark-blue);
+  color: var(--Very-Light-Grayish-Blue);
+}
+
+.card:nth-child(2) button{
+  background: var(--Very-Light-Grayish-Blue);
+  color: var(--dark-blue);
+}
+
+.card:nth-child(2) button:hover{
+  background: transparent;
+  border: 1px solid var(--Very-Light-Grayish-Blue);
+  color: var(--Very-Light-Grayish-Blue);
+}
+
+/* ------------- Make Resposive --------------- */
+
+@media screen and (min-width: 350px) {
+  body{
+    background-position: 10rem -3rem;
+  }
+}
+@media screen and (min-width: 700px) {
+  body{
+    background: hsl(0deg 0.81% 93%);
+    position: relative;
+  }
+  body::before{ 
+    padding: 0;
+    margin: 0;
+    content: url('../images/bg-bottom.svg');
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: -1%;
+  }
+  body::after{ 
+    padding: 0;
+    margin: 0;
+    content: url('../images/bg-top.svg');
+    position: absolute;
+    z-index: -1;
+    top: -5%;
+    right: 0;
+  }
+}
+
+@media screen and (min-width: 780px) {
+  .pricing-box{
+    justify-content: center; 
+    align-items: center;
+    gap: 0;
+  }
+  .card{
+    margin: 0;
+  }
+  .card:nth-child(2){
+    padding: 30px 20px;
+  }
+}

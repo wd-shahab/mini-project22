@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body{
+      min-height: 100vh;
+      background: #050836;
+      display: grid;
+      place-items: center;
+    }
+    .parent{display: flex;}
+    .toggle{
+      width: 80px;
+      height: 35px;
+      background: #eb53e3;
+      border-radius: 50px;
+      margin: 0 10px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 0 5px;
+    }
+    input{
+      display: none;
+    }
+    .main{
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #333;
+      position: absolute;
+      transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    #yearly:checked + .main{
+      transform: translateX(0);
+    }
+    #month:checked + .main{
+      transform: translateX(125%);
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="parent">
+    <label for="yearly">yearly</label>
+    
+    <label class="toggle" for="month" onchange="chang(event)">
+      <input type="radio" name="i" id="yearly" checked>
+      <input type="radio" name="i" id="month">
+      <div class="main"></div>
+    </label>
+
+    <label for="month">month</label>
+  </div>
+
+  <script>
+    function chang(e){
+      console.log(e.target.id)
+      if (e.target.id == 'month'){
+        document.querySelector(".toggle").setAttribute('for', 'yearly')
+      }else
+        document.querySelector(".toggle").setAttribute('for', 'month')
+    }
+  </script>
+</body>
+</html>
